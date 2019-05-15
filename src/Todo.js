@@ -13,14 +13,14 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './Styles/TodoStyles';
 
 function Todo(props) {
-	const { task, completed, classes } = props;
+	const { id, task, completed, removeTodo, toggleTodo, classes } = props;
 
 	return (
 		<ListItem>
-			<CheckBox tabIndex={-1} checked={completed} />
+			<CheckBox tabIndex={-1} checked={completed} onClick={() => toggleTodo(id)} />
 			<ListItemText className={classNames({ [classes.listItemText]: completed })}>{task}</ListItemText>
 			<ListItemSecondaryAction>
-				<IconButton aria-label="Delete">
+				<IconButton aria-label="Delete" onClick={() => removeTodo(id)}>
 					<DeleteIcon />
 				</IconButton>
 				<IconButton aria-label="Edit">
