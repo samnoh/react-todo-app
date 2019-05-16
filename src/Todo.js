@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import classNames from 'classnames';
 
 import { DispatchContext } from './Contexts/todos.context';
@@ -48,4 +48,4 @@ function Todo(props) {
 	);
 }
 
-export default withStyles(styles)(Todo);
+export default memo(withStyles(styles)(Todo));
