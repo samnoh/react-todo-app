@@ -7,7 +7,7 @@ import styles from './Styles/EditTodoFormStyles';
 
 function EditTodoForm(props) {
 	const { id, task, toggleEditForm, classes } = props;
-	const { editTodo } = useContext(TodosContext);
+	const { dispatch } = useContext(TodosContext);
 	const [ value, handleChange, reset ] = useInputState(task);
 
 	return (
@@ -15,7 +15,7 @@ function EditTodoForm(props) {
 			className={classes.form}
 			onSubmit={(e) => {
 				e.preventDefault();
-				editTodo(id, value);
+				dispatch({ type: 'EDIT', id: id, newTask: value });
 				reset();
 				toggleEditForm();
 			}}

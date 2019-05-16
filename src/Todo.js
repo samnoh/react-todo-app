@@ -18,7 +18,7 @@ import styles from './Styles/TodoStyles';
 
 function Todo(props) {
 	const { id, task, completed, classes } = props;
-	const { removeTodo, toggleTodo } = useContext(TodosContext);
+	const { dispatch } = useContext(TodosContext);
 	const [ isEditing, toggle ] = useToggleState(false);
 
 	return (
@@ -32,10 +32,10 @@ function Todo(props) {
 				</React.Fragment>
 			) : (
 				<React.Fragment>
-					<CheckBox tabIndex={-1} checked={completed} onClick={() => toggleTodo(id)} />
+					<CheckBox tabIndex={-1} checked={completed} onClick={() => dispatch({ type: 'TOGGLE', id: id })} />
 					<ListItemText className={classNames({ [classes.listItemText]: completed })}>{task}</ListItemText>
 					<ListItemSecondaryAction>
-						<IconButton aria-label="Delete" onClick={() => removeTodo(id)}>
+						<IconButton aria-label="Delete" onClick={() => dispatch({ type: 'REMOVE', id: id })}>
 							<DeleteIcon />
 						</IconButton>
 						<IconButton aria-label="Edit" onClick={toggle}>
