@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 
+import { TodosContext } from './Contexts/todos.context';
 import useToggleState from './Hooks/useToggleState';
 import EditTodoForm from './EditTodoForm';
 
@@ -16,14 +17,15 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './Styles/TodoStyles';
 
 function Todo(props) {
-	const { id, task, completed, removeTodo, toggleTodo, editTodo, classes } = props;
+	const { id, task, completed, classes } = props;
+	const { removeTodo, toggleTodo } = useContext(TodosContext);
 	const [ isEditing, toggle ] = useToggleState(false);
 
 	return (
 		<ListItem className={classes.listItem}>
 			{isEditing ? (
 				<React.Fragment>
-					<EditTodoForm id={id} task={task} editTodo={editTodo} toggleEditForm={toggle} />
+					<EditTodoForm id={id} task={task} toggleEditForm={toggle} />
 					<IconButton aria-label="Cancle" onClick={toggle}>
 						<CancleIcon />
 					</IconButton>
