@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 
-import { TodosContext } from './Contexts/todos.context';
+import { DispatchContext } from './Contexts/todos.context';
 import useToggleState from './Hooks/useToggleState';
 import EditTodoForm from './EditTodoForm';
 
@@ -18,7 +18,7 @@ import styles from './Styles/TodoStyles';
 
 function Todo(props) {
 	const { id, task, completed, classes } = props;
-	const { dispatch } = useContext(TodosContext);
+	const dispatch = useContext(DispatchContext);
 	const [ isEditing, toggle ] = useToggleState(false);
 
 	return (
