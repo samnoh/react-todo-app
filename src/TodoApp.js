@@ -21,7 +21,7 @@ function TodoApp({ classes }) {
 				</ToolBar>
 			</AppBar>
 			<Grid className={classes.grid} container justify="center">
-				<Grid item xs={11} md={8} lg={5}>
+				<Grid item xs={11} md={9} lg={7} xl={5}>
 					<TodosProvider>
 						<TodoForm />
 						<TodoList />
